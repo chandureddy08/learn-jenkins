@@ -1,6 +1,7 @@
 pipeline {
-    agent {
-        label 'AGENT-1'
+    agent any
+    options{
+        timeout(time: 1, unit: 'SECONDS')
     }
     stages{
         stage('Build') {
@@ -10,12 +11,13 @@ pipeline {
         }
         stage('Test') {
             steps{
-            sh 'echo this is test stage
+            sh 'echo this is test stage'
+            sh 'sleep 10'
             }
         }
          stage('Deploy') {
             steps{
-            sh 'echo this is Deploy stage
+            sh 'echo this is Deploy stage'
             }
         }
     }
